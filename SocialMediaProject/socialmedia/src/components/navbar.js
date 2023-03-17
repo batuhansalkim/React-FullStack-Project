@@ -22,7 +22,7 @@ export const Navbar = ()=>{
                     <>
                         <p>{ user?.displayName}</p>
                         <img src={user?.photoURL} width="40" height="40" />
-                    <button onClick={signUserOut}>Log Out</button>
+                        <button onClick={signUserOut}>Log Out</button>
                     </>
                 )}
             </div>
