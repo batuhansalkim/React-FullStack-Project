@@ -23,6 +23,7 @@ export const Navbar = ()=>{
                 {!user ? <Link to="/login">Login</Link> : (
                     <Link to="/create">Create Post</Link>
                 )}
+                <Link to="/update">Update1.1</Link>
                 
             </div>
             <div className="user">
