@@ -12,8 +12,13 @@ export const Navbar = ()=>{
     }
 
     return (
+        
         <div className="navbar">
-            <div className="links">
+            <div className="admin">
+                <h5>Admin : <span>batuslkm</span> </h5>
+            </div>
+            <div className="navbar"> 
+                <div className="links">
                 <Link to="/">Home</Link>
                 {!user ? <Link to="/login">Login</Link> : (
                     <Link to="/create">Create Post</Link>
@@ -29,6 +34,8 @@ export const Navbar = ()=>{
                     </>
                 )}
             </div>
+            </div>
+            
         </div>
         
     )

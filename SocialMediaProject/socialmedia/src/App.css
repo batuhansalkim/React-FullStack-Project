@@ -15,6 +15,19 @@ body {
   align-items: center;
   justify-content: flex-end;
 }
+.navbar .admin{
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin-left: 10px;
+}
+.navbar .admin span{
+  color: white;
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+}
 .navbar.links{
   text-align: center;
   margin-right: 50px;
