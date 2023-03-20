@@ -92,6 +92,9 @@ body {
   color: white;
   border-radius: 20px;
 }
+.footer .likes{
+  color: white;
+}
 input,
 textarea {
   font-family: "Nunito", sans-serif;
