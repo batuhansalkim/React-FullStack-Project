@@ -7,19 +7,26 @@ import { useEffect, useState } from "react";
 export const Post =(props)=>{
     const {post} = props;
     const [user] = useAuthState(auth);
-    const [likeAmount,setLikeAmount] = useState();
+    const [likes,setLikes] = useState();
     const likesRef = collection(db,"likes");
 
     const likesDoc = query(likesRef,where("postId", "==", post.id));
 
     const getLikes = async()=>{
      const data =  await getDocs(likesDoc);
-     setLikeAmount(data.docs.length);
+     setLikes(data.docs.map((doc)=>({userId:doc.data().userId})));
     }
 
     const addLike=async()=>{
-        await addDoc(likesRef, {userId:user?.uid,postId:post.id})
+        await addDoc(likesRef, {userId:user?.uid,postId:post.id});
+        if(user){
+            setLikes((prev)=>prev ?  [...prev, {userId: user.uid}] : [{userId:user.uid}]);
+        }
     }
+
+    const hasUserLiked = likes?.find((like)=>like.userId === user?.uid);
+
+
     useEffect(()=>{
         getLikes();
     },[]);
@@ -34,8 +41,8 @@ export const Post =(props)=>{
             </div>
             <div className="footer">
                 <p>@{post.username}</p>
-                <button onClick={addLike}>&#128077;</button>
-                {likeAmount && <p className="likes">Likes: {likeAmount}</p>}
+                <button onClick={addLike}>{hasUserLiked ? <>&#128078;</> :  <>&#128077;</>}</button>
+                {likes && <p className="likes">Likes: {likes?.length}</p>}
             </div>
             {/* <div className="stick"></div> */}
        </div> 
