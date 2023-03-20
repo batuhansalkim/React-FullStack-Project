@@ -1,6 +1,7 @@
 import {getDocs,collection} from "firebase/firestore";
 import {useEffect, useState} from "react";
-import {db} from "../config/firebase";
+import {db} from "../../config/firebase";
+import { Post } from "./post";
 
 export const Main=()=>{
     const [postsList, setPostsList] = useState(null);
@@ -15,6 +16,6 @@ export const Main=()=>{
     },[]);
     
     return(
-        <div>Anasayfa</div>  
+        <div>{postsList?.map((post)=> <Post post={post}/>)}</div>  
     )
 }
